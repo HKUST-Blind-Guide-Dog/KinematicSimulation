@@ -12,11 +12,16 @@ ________________________________________________________________________________
 ![body](media/body.png)
 __________________________________________________________________________________________
 >kinematicSimulation: this file is just for visualzation to combine the two kinematic solver above
-**has some bugs when drawing legs in the different hip joints**, will resolve it later on
+~~**has some bugs when drawing legs in the different hip joints**, will resolve it later on~~
+`wrong transformation bug to draw the leg in the global frame`
 ![buggedDog](media/bug.jpg)
+-----------------------------------------------------------------------
+#**correct calculation result:**
+![realDog](media/fixed.jpg)
 
 ## Kinematic Explaination
 ![](media/leg.jpg)
+---------------------------------------------------------------
 ![](media/body.jpg)
 
 

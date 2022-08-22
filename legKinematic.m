@@ -1,4 +1,4 @@
-testing for legik
+%testing for legik
 setCanvas(110);
 angles = legIK(-55,-100,20)
 degreeAngles = angles*180/pi
@@ -34,7 +34,7 @@ function jointPositions = calLegPoints(jointAngles)
     wrist_length = 80;
     theta23 = jointAngles(2,1) + jointAngles(3,1);
 
-    jointPositions(1, 1:4) = [1 1 1 0];
+    jointPositions(1, 1:4) = [0 0 0 1];
     jointPositions(2, 1:4) = jointPositions(1,1:4)+[-shoulder_length*cos(jointAngles(1,1)), shoulder_length*sin(jointAngles(1,1)), 0, 0];
     jointPositions(3, 1:4) = jointPositions(2,1:4)+[-shoulder_hip_vertical_offset*sin(jointAngles(1,1)), -shoulder_hip_vertical_offset*cos(jointAngles(1,1)), 0, 0];
     jointPositions(4, 1:4) = jointPositions(3,1:4)+[-elbow_length*sin(jointAngles(1,1))*cos(jointAngles(2,1)), -elbow_length*cos(jointAngles(1,1))*cos(jointAngles(2,1)), elbow_length*sin(jointAngles(2,1)), 0];

@@ -4,7 +4,7 @@ FR = 2;
 BL = 3;
 BR = 4;
 
-TESTING for body ik
+%TESTING for body ik
 %setCanvas(100);
 scatter3(0,0,0,'wo','linewidth',1);
 xlim([-200, 200]);

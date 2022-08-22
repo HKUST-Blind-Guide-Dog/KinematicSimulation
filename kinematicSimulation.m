@@ -23,13 +23,13 @@ function dogVisualization(Legs, body)
     plot3([A(1,1), A(2,1), A(4,1), A(3,1), A(1,1)],[A(1,3), A(2,3), A(4,3), A(3,3), A(1,3)],[A(1,2), A(2,2), A(4,2), A(3,2), A(1,2)],'green','LineWidth',5)
     hold on;
     %rotate 180 degree about x-axis
-    Tx = [-1 0 0 0;
-        0 1 0 0;
-        0 0 1 0;
-        0 0 0 1];
+    Tx = [1 0 0 0;
+          0 1 0 0;
+          0 0 1 0;
+          0 0 0 1];
 
     %draw legs
-    Q = inv(T1)*(Legs(1,1:4))';
+    Q = inv(T1)*(Legs(1,1:4))'
     legPoints = calLegPoints(legIK(Q(1),Q(2),Q(3)));
     leg = zeros(5,4);
     for i = 1:5
@@ -43,7 +43,7 @@ function dogVisualization(Legs, body)
     leg = zeros(5,4);
     for i = 1:5
         x = (legPoints(i,1:4))';
-        leg(i,1:4) = (T2*x)';
+        leg(i,1:4) = (T2*Tx*x)';
     end
     drawLeg(leg);
 
@@ -61,7 +61,7 @@ function dogVisualization(Legs, body)
     leg = zeros(5,4);
     for i = 1:5
         x = (legPoints(i,1:4))';
-        leg(i,1:4) = (T4*x)';
+        leg(i,1:4) = (T4*Tx*x)';
     end
     drawLeg(leg);
 
@@ -158,7 +158,7 @@ function jointPositions = calLegPoints(jointAngles)
     wrist_length = 80;
     theta23 = jointAngles(2,1) + jointAngles(3,1);
 
-    jointPositions(1, 1:4) = [1 1 1 0];
+    jointPositions(1, 1:4) = [0 0 0 1];
     jointPositions(2, 1:4) = jointPositions(1,1:4)+[-shoulder_length*cos(jointAngles(1,1)), shoulder_length*sin(jointAngles(1,1)), 0, 0];
     jointPositions(3, 1:4) = jointPositions(2,1:4)+[-shoulder_hip_vertical_offset*sin(jointAngles(1,1)), -shoulder_hip_vertical_offset*cos(jointAngles(1,1)), 0, 0];
     jointPositions(4, 1:4) = jointPositions(3,1:4)+[-elbow_length*sin(jointAngles(1,1))*cos(jointAngles(2,1)), -elbow_length*cos(jointAngles(1,1))*cos(jointAngles(2,1)), elbow_length*sin(jointAngles(2,1)), 0];
